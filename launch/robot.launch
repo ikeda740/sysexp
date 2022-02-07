@@ -1,0 +1,17 @@
+<launch>
+  <arg name="simulate" default="false" />
+
+  <!-- rosbridge server (json mode) -->
+  <include file="$(find rosbridge_server)/launch/rosbridge_tcp.launch" />
+
+  <!-- multiplexer -->
+  <include file="$(find sysexp)/launch/multiplex.launch" />
+
+  <!-- robot -->
+  <group if="$(arg simulate)">
+    <include file="$(find sysexp)/launch/turtlesim_cmdvel.launch" />
+  </group>
+  <group unless="$(arg simulate)">
+    <include file="$(find sysexp)/launch/robot_cmdvel.launch" />
+  </group>
+</launch>

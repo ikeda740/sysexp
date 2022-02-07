@@ -1,0 +1,16 @@
+<launch>
+  <!-- velocity multiplexer -->
+  <!-- parameter for velocity multiplexer -->
+  <arg name="nodelet_manager_name"  default="nodelet_manager"/>
+  <arg name="config_file"           default="$(find sysexp)/config/cmd_mux_config.yaml" />
+
+  <!-- nodelet manager -->
+  <node pkg="nodelet" type="nodelet" name="$(arg nodelet_manager_name)" args="manager" />
+
+  <!-- velocity mulitplexer -->
+  <node pkg="nodelet" type="nodelet" name="cmd_vel_mux" 
+        args="load yocs_cmd_vel_mux/CmdVelMuxNodelet $(arg nodelet_manager_name)" >
+    <param name="yaml_cfg_file" value="$(arg config_file)"/>
+    <remap from="cmd_vel_mux/output" to="/cmd_vel" />
+  </node>
+</launch>
