@@ -1,6 +1,9 @@
 <launch>
   <!-- robot -->
-  <node pkg="map_cmd_vel" name="map_cmd_vel" type="map_cmd_vel"/>
+  <node pkg="map_cmd_vel" name="map_cmd_vel" type="map_cmd_vel">
+    <param name="amplitude" value="1500.0" />
+  </node>
+  
   <node pkg="rosserial_python" name="serial_node" type="serial_node.py">
     <param name="port" value="/dev/ttyTHS1" />
   </node>
