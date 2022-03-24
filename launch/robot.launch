@@ -2,7 +2,7 @@
   <arg name="simulate" default="false" />
 
   <!-- rosbridge server (json mode) -->
-  <include file="$(find rosbridge_server)/launch/rosbridge_tcp.launch" />
+  <include file="$(find rosbridge_server)/launch/rosbridge_websocket.launch" />
 
   <!-- multiplexer -->
   <include file="$(find sysexp)/launch/multiplex.launch" />
