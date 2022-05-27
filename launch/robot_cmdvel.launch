@@ -5,6 +5,7 @@
   </node>
   
   <node pkg="rosserial_python" name="serial_node" type="serial_node.py">
-    <param name="port" value="/dev/ttyTHS1" />
+    <param name="port" value="/dev/ttyS0" />
+    <param name="baud" value="230400" />
   </node>
 </launch>
